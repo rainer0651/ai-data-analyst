@@ -8,6 +8,8 @@ them. First run triggers an interactive browser consent; the auth URL is printed
 user to open manually (no GUI browser is reachable from the app's shell).
 """
 
+import json
+import os
 from datetime import datetime
 from pathlib import Path
 
@@ -31,18 +33,35 @@ _MAX_CELLS = 5_000_000  # Sheets hard limit; guard so a huge export fails clearl
 
 
 def _get_sheets_service():
+    # Credentials come from the local token file (dev) or the GOOGLE_TOKEN_JSON secret
+    # (hosted, e.g. Streamlit Cloud). The saved token carries client id/secret + refresh
+    # token, so it can authenticate and refresh without the interactive flow.
     creds = None
+    from_file = False
     if TOKEN_PATH.exists():
         creds = Credentials.from_authorized_user_file(str(TOKEN_PATH), SCOPES)
+        from_file = True
+    elif os.environ.get("GOOGLE_TOKEN_JSON"):
+        creds = Credentials.from_authorized_user_info(
+            json.loads(os.environ["GOOGLE_TOKEN_JSON"]), SCOPES
+        )
 
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(str(CREDENTIALS_PATH), SCOPES)
-            creds = flow.run_local_server(
-                port=0, access_type="offline", prompt="consent", open_browser=False
+    if creds and not creds.valid and creds.expired and creds.refresh_token:
+        creds.refresh(Request())
+        if from_file:  # can't persist back to a secret, only to the local file
+            TOKEN_PATH.write_text(creds.to_json(), encoding="utf-8")
+
+    if not creds:
+        # No saved token: run the interactive consent flow (works on a local machine only).
+        if not CREDENTIALS_PATH.exists():
+            raise RuntimeError(
+                "Google Sheets export isn't configured here. Set the GOOGLE_TOKEN_JSON "
+                "secret (contents of token_sheets.json) to enable it on this deployment."
             )
+        flow = InstalledAppFlow.from_client_secrets_file(str(CREDENTIALS_PATH), SCOPES)
+        creds = flow.run_local_server(
+            port=0, access_type="offline", prompt="consent", open_browser=False
+        )
         TOKEN_PATH.write_text(creds.to_json(), encoding="utf-8")
 
     return build("sheets", "v4", credentials=creds)
