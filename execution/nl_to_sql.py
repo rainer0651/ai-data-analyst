@@ -25,7 +25,20 @@ CONTEXT_PATH = PROJECT_ROOT / "context" / "database_context.md"
 
 MODEL = "claude-opus-5"
 
-_client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY from env
+_client = None
+
+
+def _get_client() -> anthropic.Anthropic:
+    """Build the Anthropic client lazily, reading the API key at first use.
+
+    On hosts like Streamlit Community Cloud the key is injected via st.secrets (mirrored
+    into the environment at startup); constructing the client at import time could capture
+    an empty key and then fail every request with "Could not resolve authentication method".
+    """
+    global _client
+    if _client is None:
+        _client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
+    return _client
 
 # JSON schema constraining the SQL-generation response so we always get a
 # predictable shape back (Claude Opus 5 supports structured outputs).
@@ -129,7 +142,7 @@ def generate_sql(question: str, history: list[dict] | None = None) -> dict:
         f"# New request\n{question}"
     )
 
-    response = _client.messages.create(
+    response = _get_client().messages.create(
         model=MODEL,
         max_tokens=4000,
         system=_SQL_SYSTEM,
@@ -158,7 +171,7 @@ def summarize_results(question: str, sql: str, df: pd.DataFrame) -> str:
         f"Result ({shape_note}), as CSV:\n{preview}"
     )
 
-    response = _client.messages.create(
+    response = _get_client().messages.create(
         model=MODEL,
         max_tokens=1200,
         system=_INSIGHTS_SYSTEM,
