@@ -1,0 +1,11 @@
+c01_exterior 01a10edb-d641-7b10-82ca-99f838da2bfd
+c02_showroom 01a10edb-d96d-7ec3-9e45-002deb2d449f
+c03_database 01a10edb-e2b6-74b3-aabe-7887b38b2841
+c04_service 01a10edb-e6eb-7d80-8af9-d7920031d66a
+c05_winter_tire 01a10edb-eab5-7a20-9df8-8331098cbb7b
+c06_parts 01a10edb-ef31-7e62-8c4d-3eb6c4be8ef7
+c07_event_aerial 01a10edb-f2c4-7f33-aa23-5ef99731641c
+c08_event_keys 01a10edb-f649-7053-bc22-f38d8a49ff7f
+c09_dashboard 01a10edb-f9cc-7b10-8b59-11cb4193b57e
+c10_ai_receptionist 01a10edb-fd5c-7861-aa34-d7f21eeb574c
+c11_accounting 01a10edc-0116-7432-bc49-a34476a41432
