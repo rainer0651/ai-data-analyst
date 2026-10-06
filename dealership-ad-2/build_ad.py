@@ -21,7 +21,7 @@ SEGS = [
     ("workflow_diagram",    0.00, 6.00, 15.00, 21.00, None),   # "creating marketing workflows"
     ("c04_service",         0.30, 3.00, 21.00, 24.00, None),   # free tire rotation + brake inspection
     ("c05_winter_tire",     1.00, 1.96, 24.00, 25.96, None),   # winter tire sale
-    ("c06_parts",           0.84, 3.64, 25.96, 29.60, None),   # washer fluid
+    ("c06b_parts",          0.84, 3.64, 25.96, 29.60, None),   # washer fluid (sealed jug handoff, no pouring)
     ("c07_event_aerial",    0.00, 6.59, 29.60, 36.24, None),   # sales event
     ("c08_event_keys",      1.15, 5.44, 36.24, 41.68, None),   # once-in-a-lifetime
     ("c09_dashboard",       1.70, 3.48, 41.68, 45.16, None),   # power of the AI tool
