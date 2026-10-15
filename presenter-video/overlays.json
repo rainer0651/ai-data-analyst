@@ -1,16 +1,113 @@
 {
- "seg_gstart": {"01":0,"02a":8.53,"02b":10.55,"03":12.65,"04":22.19,"05":27.39,"06":35.44,"07":45.24,"08":52.57,"09":61.9,"10":69.23,"11":78.89,"12":88.56},
+ "seg_gstart": {
+  "02b": 10.55,
+  "03": 12.65,
+  "04": 22.19,
+  "05": 27.39,
+  "06": 35.44,
+  "08": 52.57,
+  "09": 61.9,
+  "10": 69.23,
+  "11": 78.89,
+  "12": 88.56,
+  "open": 0,
+  "07a": 45.24,
+  "07b": 47.3
+ },
  "overlays": [
-  {"kind":"video","src":"anim/c08_event_keys.mp4","src_start":0.5,"start":19.40,"end":20.15,"label":"SALES"},
-  {"kind":"video","src":"anim/c04_service.mp4","src_start":0.3,"start":20.15,"end":20.66,"label":"SERVICE"},
-  {"kind":"video","src":"anim/c06b_parts.mp4","src_start":1.0,"start":20.66,"end":21.26,"label":"PARTS"},
-  {"kind":"video","src":"anim/c11_accounting.mp4","src_start":1.0,"start":21.26,"end":22.30,"label":"ACCOUNTING"},
-  {"kind":"video","src":"anim/over_shoulder.mp4","src_start":0.0,"start":47.10,"end":49.60},
-  {"kind":"video","src":"anim/crm_anim.mp4","src_start":0.0,"start":49.60,"end":58.30},
-  {"kind":"video","src":"anim/cust_balk.mp4","src_start":0.2,"start":62.40,"end":65.58},
-  {"kind":"video","src":"anim/cust_lean.mp4","src_start":0.2,"start":65.58,"end":69.10},
-  {"kind":"video","src":"anim/salesman.mp4","src_start":1.6,"src_end":4.48,"start":75.05,"end":78.60},
-  {"kind":"alpha","src":"anim/lead_card.mov","start":75.05,"end":78.60},
-  {"kind":"image","src":"anim/receptionist.jpg","start":80.30,"end":83.10}
+  {
+   "kind": "video",
+   "src": "anim/c08_event_keys.mp4",
+   "src_start": 0.5,
+   "start": 19.4,
+   "end": 20.15,
+   "label": "SALES"
+  },
+  {
+   "kind": "video",
+   "src": "anim/c04_service.mp4",
+   "src_start": 0.3,
+   "start": 20.15,
+   "end": 20.66,
+   "label": "SERVICE"
+  },
+  {
+   "kind": "video",
+   "src": "anim/c06b_parts.mp4",
+   "src_start": 1.0,
+   "start": 20.66,
+   "end": 21.26,
+   "label": "PARTS"
+  },
+  {
+   "kind": "video",
+   "src": "anim/c11_accounting.mp4",
+   "src_start": 1.0,
+   "start": 21.26,
+   "end": 22.3,
+   "label": "ACCOUNTING"
+  },
+  {
+   "kind": "video",
+   "src": "anim/over_shoulder.mp4",
+   "src_start": 0.0,
+   "start": 47.1,
+   "end": 49.6
+  },
+  {
+   "kind": "video",
+   "src": "anim/crm_anim.mp4",
+   "src_start": 0.0,
+   "start": 49.6,
+   "end": 58.3
+  },
+  {
+   "kind": "video",
+   "src": "anim/cust_balk.mp4",
+   "src_start": 0.2,
+   "start": 62.4,
+   "end": 65.58
+  },
+  {
+   "kind": "video",
+   "src": "anim/cust_lean.mp4",
+   "src_start": 0.2,
+   "start": 65.58,
+   "end": 69.1
+  },
+  {
+   "kind": "video",
+   "src": "anim/salesman.mp4",
+   "src_start": 1.6,
+   "src_end": 4.48,
+   "start": 75.05,
+   "end": 78.4
+  },
+  {
+   "kind": "video",
+   "src": "anim/salesman_ext.mp4",
+   "src_start": 0.0,
+   "src_end": 2.4,
+   "start": 78.4,
+   "end": 80.3
+  },
+  {
+   "kind": "image",
+   "src": "anim/receptionist_user.jpg",
+   "start": 80.3,
+   "end": 83.1
+  },
+  {
+   "kind": "image",
+   "src": "anim/contact_card.jpg",
+   "start": 88.62,
+   "end": 90.7
+  },
+  {
+   "kind": "alpha",
+   "src": "anim/lead_card.mov",
+   "start": 75.05,
+   "end": 78.6
+  }
  ]
 }
