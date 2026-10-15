@@ -48,6 +48,10 @@ def main():
     open(lst, "w").writelines(f"file '{s}'\n" for s in segs)
     joined = os.path.join(HERE, "joined.mp4")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", joined], check=True)
+    if os.path.exists(os.path.join(HERE, "overlays.json")):
+        sys.path.insert(0, HERE); import apply_overlays
+        apply_overlays.main("joined.mp4", "joined_ov.mp4")
+        joined = os.path.join(HERE, "joined_ov.mp4")
     out = os.path.join(HERE, "presenter_ad_9x16.mp4")
     T = dur(joined)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", joined, "-vf", f"fade=t=out:st={T-0.5:.3f}:d=0.5",

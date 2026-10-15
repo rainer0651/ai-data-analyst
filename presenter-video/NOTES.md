@@ -6,3 +6,9 @@
 - `images/` — presenter stills/camera angles and the 3 cutaway images.
 - `edit_plan.json` + `assemble.py` — the edit: per-clip retiming to the voiceover and the cutaways. To rebuild, copy
   `clips/*`, `audio/*` and `images/img*.jpg` into one folder with these two files and run `python3 assemble.py`.
+
+## Update: cutaways (v3)
+- `overlays.json` + `apply_overlays.py` — cutaways timed to words (from `words.json` transcript): 4 departments
+  (reuses ../dealership-ad-2 clips c08/c04/c06b/c11 — copy them into `anim/` before rebuilding), CRM screen sequence
+  (`anim/crm_anim.mp4`, rendered by `make_crm_anim.py`), Advertising/Marketing customer reactions, salesman + lead card,
+  AI receptionist still (frame from texnet.ca receptionist video).
