@@ -1,7 +1,7 @@
 [
  {
   "name": "open",
-  "raw": "rOpen.mp4",
+  "raw": "rOpen2.mp4",
   "audio": "open01.mp3",
   "pieces": [
    [
@@ -138,14 +138,14 @@
  },
  {
   "name": "07a",
-  "raw": "r07a.mp4",
+  "raw": "r07a2.mp4",
   "audio": "c07a.mp3",
   "pieces": [
    [
+    0.46,
+    2.336,
     0,
-    2.112,
-    0,
-    2.112
+    1.876
    ]
   ]
  },
