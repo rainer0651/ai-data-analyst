@@ -12,3 +12,8 @@
   (reuses ../dealership-ad-2 clips c08/c04/c06b/c11 — copy them into `anim/` before rebuilding), CRM screen sequence
   (`anim/crm_anim.mp4`, rendered by `make_crm_anim.py`), Advertising/Marketing customer reactions, salesman + lead card,
   AI receptionist still (frame from texnet.ca receptionist video).
+
+## V9 iPhone fix
+- Camtasia exported V9 as full-range (yuvj420p) video, which iPhones play out of sync. Re-encoded to standard yuv420p, BT.709, limited range.
+- Lips were ~0.2s late on "those names" and ~0.17s late on "efficiently communicating with". `scripts/patch_v9_lipsync.py` moves the picture earlier there, frame-accurately; the audio is untouched.
+- Result: `New-Lead-Gen-V9-iphone-v2.mp4` (verified on iPhone).
