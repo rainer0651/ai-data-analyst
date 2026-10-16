@@ -11,7 +11,7 @@ def main(src="joined.mp4", out="joined_ov.mp4"):
     plan = json.load(open(os.path.join(HERE, "edit_plan.json")))
     js, acc = [], 0.0
     for c in plan:
-        js.append((cfg["seg_gstart"][c["name"]], acc)); acc += dur(os.path.join(HERE, f"final_{c['name']}.mp4"))
+        js.append((cfg["seg_gstart"][c["name"]], cfg["seg_gstart"][c["name"]]))  # picture is now frame-locked to voiceover time
     def m(t):
         g, j = [x for x in js if x[0] <= t + 1e-6][-1]
         return j + (t - g)
@@ -38,8 +38,8 @@ def main(src="joined.mp4", out="joined_ov.mp4"):
         fc.append(chain + f",setpts=PTS-STARTPTS+{t0:.3f}/TB[o{k}]")
         fc.append(f"[{last}][o{k}]overlay=enable='between(t,{t0:.3f},{t1:.3f})':eof_action=pass[v{k}]")
         last = f"v{k}"
-    subprocess.run(["ffmpeg","-v","error","-y",*ins,"-filter_complex",";".join(fc),"-map",f"[{last}]","-map","0:a",
-                    "-c:v","libx264","-crf","18","-preset","medium","-pix_fmt","yuv420p","-c:a","copy",os.path.join(HERE,out)],check=True)
+    subprocess.run(["ffmpeg","-v","error","-y",*ins,"-filter_complex",";".join(fc),"-map",f"[{last}]","-an",
+                    "-c:v","libx264","-crf","18","-preset","medium","-pix_fmt","yuv420p",os.path.join(HERE,out)],check=True)
     print("ok", round(dur(os.path.join(HERE, out)), 2))
 if __name__ == "__main__":
     main()
